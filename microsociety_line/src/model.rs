@@ -3,8 +3,42 @@ use serde::{Deserialize, Serialize};
 pub type Tick = u64;
 pub type SiteIndex = usize;
 
-/// Tokens in the 1-D MicroSociety line, constrained and inspectable.
-/// Units are abstract but treated as limited biophysical / social capacities.
+use crate::deed::DeedLog; // add at top
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct World {
+    pub sites: Vec<Site>,
+    pub constraints: GlobalConstraints,
+    pub policy: Policy,
+    pub tick: Tick,
+    pub history: Vec<StepLog>,
+
+    // New: per-episode deed log (can be optional at first).
+    pub deed_log: DeedLog,
+}
+
+impl World {
+    pub fn new(
+        length: usize,
+        base_capacity: f64,
+        constraints: GlobalConstraints,
+        policy: Policy,
+    ) -> Self {
+        let mut sites = Vec::with_capacity(length);
+        for i in 0..length {
+            sites.push(Site::empty(i, base_capacity));
+        }
+        Self {
+            sites,
+            constraints,
+            policy,
+            tick: 0,
+            history: Vec::new(),
+            deed_log: DeedLog::new(),
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub struct TokenState {
     pub church: f64,
