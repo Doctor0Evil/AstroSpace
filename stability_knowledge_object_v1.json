@@ -1,0 +1,31 @@
+{
+  "artifact": "REC_STABILITY_SURFACE_V1",
+  "knowledge_level_status": {
+    "agent_goals": ["environmental_invariant_tracking", "energy_minimization"],
+    "rationality_principle": "variational_free_energy_minimization",
+    "competence_mode": "autonomous_navigation"
+  },
+  "stability_metrics": {
+    "phi_max": 24.8,
+    "system_entropy_rate": 0.45,
+    "coherence_index": 0.88,
+    "adaptive_dimensionality": 124,
+    "resilience_index": 0.72
+  },
+  "causal_topology": {
+    "complex_boundary": "markov_blanket_v1_092",
+    "attractor_type": "quasi-periodic_oscillator",
+    "fisher_information_conservation": "VALIDATED",
+    "entropy_collapse_risk": "LOW"
+  },
+  "diagnostics": {
+    "rec_control_lock": "LOCKED",
+    "stochastic_novelty_regeneration": "ACTIVE",
+    "plasticity_reserve": 0.35,
+    "systemic_stress_load": 12.4
+  },
+  "invariants": [
+    {"type": "energy_exchange", "law": "first_law_of_thermodynamics"},
+    {"type": "information_current", "law": "liouville_theorem_emergent"}
+  ]
+}
